@@ -1,0 +1,160 @@
+// MAKE 1rem = 10px
+html {
+  font-size: 10px;
+}
+
+// VARIABLES
+$box-shadow: 0 1px 5px rgba(27, 31, 35, 0.15);
+
+// MIXINS
+@mixin flex($justify-content: center, $align-items: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+// BASE CLASSES
+.text-center {
+  text-align: center;
+}
+.img-responsive {
+  width: 100%;
+}
+.box-with-shadow {
+  box-shadow: $box-shadow;
+}
+.br-6 {
+  border-radius: 6px;
+}
+
+section {
+  padding: 1rem;
+  overflow: hidden;
+}
+
+// INPUT
+.input-wrapper {
+  @include flex(space-between, center);
+  @extend .br-6;
+  padding: 1rem;
+
+  img {
+    width: 2rem;
+  }
+  .left-block {
+    @include flex(flex-start, normal);
+    flex: 1;
+    input {
+      width: 85%;
+      height: 25px;
+      margin-left: 5px;
+      border: none;
+      font-size: 1.6rem;
+
+      &:active,
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  button {
+    background: transparent;
+    border: none;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+}
+// INPUT ENDS
+
+// DAYS
+.days {
+  @include flex(center, center);
+  overflow: scroll;
+  margin: 2rem 0;
+  .day {
+    @include flex();
+    flex-direction: column;
+    padding: 1rem;
+    margin: 0 1rem;
+    h6 {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    h5 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      span {
+        font-weight: normal;
+      }
+    }
+
+    img {
+      width: 1.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: grey;
+      margin: 0.5rem 0;
+    }
+  }
+}
+// DAYS END
+
+// DAY INFO
+.day-info {
+  padding: 1rem;
+  .title {
+    @include flex(flex-start, center);
+    h1 {
+      font-size: 5rem;
+      margin: 1rem 0;
+    }
+    img {
+      margin-left: 2rem;
+      width: 4rem;
+    }
+  }
+  .more-info {
+    @include flex(space-between, center);
+    margin: 2rem 0;
+    span {
+      background-color: #f5fafe;
+      width: 42%;
+      padding: 1rem;
+      h5 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin: 0;
+      }
+      h6 {
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+  .sun-rise-set {
+    span {
+      width: 50%;
+      background-color: white;
+      padding: 0;
+      &:nth-child(2) {
+        text-align: right;
+      }
+    }
+  }
+}
+// DAYS INFO END
+
+// FOR MOBILE
+@media only screen and (max-width: 600px) {
+  .days {
+    @include flex(flex-start, center);
+  }
+}
